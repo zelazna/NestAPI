@@ -2,7 +2,6 @@ import { Component } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Cat } from './entities/cat.entity';
-import { plainToClass } from "class-transformer";
 
 @Component()
 export class CatsService {

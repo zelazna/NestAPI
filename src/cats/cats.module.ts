@@ -7,9 +7,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
     controllers: [CatsController],
     components: [CatsService],
-    exports: [CatsService],
     imports: [TypeOrmModule.forFeature([Cat])],
 })
-export class CatsModule {
-    constructor(private readonly catsService: CatsService) { }
-}
+export class CatsModule {}
+// public configure(consumer: MiddlewaresConsumer) {
+//     consumer
+//       .apply(passport.authenticate('jwt', { session: false }))
+//       .forRoutes({ path: '/auth/authorized', method: RequestMethod.ALL });
+//   }
