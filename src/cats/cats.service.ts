@@ -23,7 +23,7 @@ export class CatsService {
         return await this.catRepository.findOneById(id)
     }
 
-    async delete(id: number) {
+    async deleteOne(id: number) {
         return await this.catRepository.delete({ id });
     }
 
