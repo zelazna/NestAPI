@@ -4,10 +4,6 @@ import { IsString, IsInt, IsOptional } from 'class-validator';
 @Entity()
 export class Cat {
 
-    constructor(cat) {
-        Object.assign(this, cat);
-    }
-
     @IsOptional()
     @IsInt()
     @PrimaryGeneratedColumn()

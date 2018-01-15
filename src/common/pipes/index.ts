@@ -1,2 +1,2 @@
-export * from './serialization.pipe';
+export * from './deserialization.pipe';
 export * from './parse-int.pipe';

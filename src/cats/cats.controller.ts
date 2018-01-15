@@ -1,11 +1,11 @@
-import { Controller, HttpCode, Get, Post, Delete, Body, UseInterceptors, UsePipes, Param } from '@nestjs/common';
+import { Controller, HttpCode, Get, Post, Delete, Body, UseInterceptors, UsePipes, Param, ValidationPipe } from '@nestjs/common';
 import { CatsService } from './cats.service';
-import { Cat } from './entities/cat.entity';
+import { Cat } from './cat.entity';
 import {
-  SerializationPipe,
+  DeSerializationPipe,
   ParseIntPipe,
   LoggingInterceptor,
-  TransformInterceptor
+  TransformInterceptor,
 } from '../common';
 
 @UseInterceptors(LoggingInterceptor, TransformInterceptor)
@@ -14,7 +14,7 @@ export class CatsController {
   constructor(private readonly catsService: CatsService) { }
 
   @Post()
-  @UsePipes(new SerializationPipe())
+  @UsePipes(new DeSerializationPipe())
   async create( @Body() cat: Cat): Promise<Cat> {
     return this.catsService.create(cat);
   }

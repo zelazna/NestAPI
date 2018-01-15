@@ -1,7 +1,7 @@
 import { Component } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './entities/user.entity';
+import { User } from './user.entity';
 
 @Component()
 export class UsersService {
@@ -18,8 +18,8 @@ export class UsersService {
         return await this.userRepository.save(user);
     }
 
-    async findOne(id: number): Promise<User> {
-        return await this.userRepository.findOneById(id)
+    async findOneByEmail(email: string): Promise<User> {
+        return await this.userRepository.findOne({ email });
     }
 
     async deleteOne(id: number) {

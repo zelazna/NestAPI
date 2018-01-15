@@ -1,10 +1,11 @@
 import { Pipe, ArgumentMetadata, ValidationPipe } from '@nestjs/common';
+import { plainToClass } from 'class-transformer';
 
 @Pipe()
-export class SerializationPipe extends ValidationPipe {
+export class DeSerializationPipe extends ValidationPipe {
     async transform(value, metadata: ArgumentMetadata) {
         super.transform(value, metadata)
         let { metatype } = metadata
-        return new metatype(value);
+        return plainToClass(metatype, value);
     }
 }
