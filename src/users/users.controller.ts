@@ -7,7 +7,7 @@ import { DeSerializationPipe } from '../common';
 export class UsersController {
     constructor(private readonly usersService: UsersService) { }
 
-    @Post()
+    @Post('create')
     @UsePipes(new DeSerializationPipe())
     async create( @Body() user: User): Promise<User> {
         return await this.usersService.create(user);

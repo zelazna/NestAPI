@@ -18,7 +18,9 @@ export class JwtStrategy extends Strategy {
     }
 
     public async verify(req, payload, done) {
+        console.log(payload);
         const isValid = await this.authService.validateUser(payload);
+        console.log(isValid);
         if (!isValid) {
             return done('Unauthorized', false);
         }
