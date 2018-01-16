@@ -5,7 +5,10 @@ import { EncryptorService } from '../encryptor/encryptor.service';
 
 @Component()
 export class AuthService {
-  constructor(private readonly usersService: UsersService) { }
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly encyptorService: EncryptorService,
+  ) { }
 
   async createToken(user) {
     const expiresIn = 60 * 60, secretOrKey = 'secret';
@@ -19,5 +22,6 @@ export class AuthService {
   async validateUser(signedUser): Promise<boolean> {
     const user = await this.usersService.findOneByEmail(signedUser.email);
     return await EncryptorService.validate(signedUser.password, 'lol');
+
   }
 }
